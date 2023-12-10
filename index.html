@@ -1,68 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS 1130 PRE-FINAL</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS 1130 PRE-FINAL</title>
+  <style>
+    /* Minimalist design */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff; /* White background */
+      color: #333; /* Dark text */
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Stretch header and content to full height */
+    }
 
-        header {
-            background-color: #333;
-            padding: 15px;
-            color: white;
-            text-align: center;
-            width: 100%;
-        }
+    /* Dark grey header and navigation */
+    header {
+      background-color: #333; /* Dark grey header background */
+      padding: 20px 0;
+      color: #f2f2f2; /* Light grey text */
+      text-align: center;
+      width: 100%;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #ddd;
-            padding: 10px;
-            width: 100%;
-        }
+    h1 {
+      font-size: 2em;
+      font-weight: 350;
+      margin-bottom: 5px;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin: 0 15px;
-            font-weight: bold;
-        }
+    /* Navigation menu */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #424242; /* Slightly lighter grey navigation background */
+      padding: 10px;
+      width: 100%;
+     
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        #content {
-            flex: 1;
-            padding: 20px;
+    nav a {
+      text-decoration: none;
+      color: #f2f2f2; /* Light grey text color */
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      color: #f5f5f5; /* Slightly darker light grey on hover */
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #333; /* Dark text color */
+    }
+      img {
+            width: 100%; /* Make the image fill its container */
+            max-width: 800px; /* Limit the image width to 800px */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px; /* Add some space below the image */
         }
-    </style>
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>CS 1130 PRE-FINAL</h1>
-    </header>
+  <header>
+    <h1>CS 1130 PRE-FINAL</h1>
+  </header>
 
-    <nav>
-        <a href="payroll.html">Payroll System</a>
-        <a href="taxcalculator.html">Income Tax Calculator</a>
-        <a href="unitconverter.html">Unit Converter</a>
-        <a href="factorialcalculator.html">Factorial Calculator</a>
-    </nav>
+  <nav>
+    <a href="payroll.html">Payroll System</a>
+    <a href="taxcalculator.html">Income Tax Calculator</a>
+    <a href="unitconverter.html">Unit Converter</a>
+    <a href="factorialcalculator.html">Factorial Calculator</a>
+  </nav>
 
-    <div id="content">
+  <div id="content">
+        <img src="hackirdaw.jpg" alt="Hacker Brrt Brrt">
         <p>Welcome to the CS 1130 Pre-Final Project!</p>
         <p>Please select a section from the navigation bar.</p>
     </div>
-
 </body>
 </html>
