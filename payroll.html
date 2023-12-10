@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payroll System</title>
+    <title>Employee Payroll System</title>
     <style>
         /* Include your styles specific to the Payroll System here */
     </style>
 </head>
 <body>
 
-    <h2>Employee Payroll System</h2>
+    <div id="left-section">
+        <h2>Employee Payroll System</h2>
 
-    <!-- Your Payroll System content here -->
+        <input type="text" id="name" placeholder="Employee Name">
+        <input type="number" id="daysWorked" placeholder="Days Worked">
+        <input type="number" id="dailyRate" placeholder="Daily Rate">
+        <input type="number" id="deductionAmount" placeholder="Deduction Amount">
+        <button onclick="addEmployee()">Add Employee</button>
+        <button onclick="clearTable()">Clear All</button>
+
+        <table id="payrollTable">
+            <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
 
     <script>
         let payrollList = [];
+
         function addEmployee() {
             let name = document.getElementById("name").value;
             let daysWorked = parseInt(document.getElementById("daysWorked").value);
@@ -51,6 +72,13 @@
                 let row = table.insertRow(-1);
                 row.innerHTML = `<td>${index + 1}</td><td>${employee.name}</td><td>${employee.daysWorked}</td><td>${employee.dailyRate}</td><td>${employee.grossPay}</td><td>${employee.deductionAmount}</td><td>${employee.netPay}</td><td><button onclick="deleteEmployee(${index})">Delete</button></td>`;
             });
+        }
+
+        function clearTable() {
+            if (confirm("Are you sure you want to clear all data?")) {
+                payrollList = [];
+                updateTable();
+            }
         }
     </script>
 
