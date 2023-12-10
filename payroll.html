@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Payroll System</title>
     <style>
+  
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 13px;
+            background-color: #007bff;
+            height: 16px;
+        }
+
+        nav a.home {
+            margin-left: auto;
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -25,10 +43,18 @@
             margin-bottom: 10px;
         }
     </style>
+        
+    </style>
 </head>
+ <header>
+        <nav>
+        <h2>Employee Payroll System</h2>
+        <a href="index.html" class="home" >Home</a>     
+        </nav>
+    </header>
 <body>
 
-    <h2>Employee Payroll System</h2>
+    
 
     <input type="text" id="name" placeholder="Employee Name">
     <input type="number" id="daysWorked" placeholder="Days Worked">
