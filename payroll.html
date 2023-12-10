@@ -4,34 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Payroll System</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <div id="left-section">
-        <h2>Employee Payroll System</h2>
+    <h2>Employee Payroll System</h2>
 
-        <input type="text" id="name" placeholder="Employee Name">
-        <input type="number" id="daysWorked" placeholder="Days Worked">
-        <input type="number" id="dailyRate" placeholder="Daily Rate">
-        <input type="number" id="deductionAmount" placeholder="Deduction Amount">
-        <button onclick="addEmployee()">Add Employee</button>
-        <button onclick="clearTable()">Clear All</button>
+    <input type="text" id="name" placeholder="Employee Name">
+    <input type="number" id="daysWorked" placeholder="Days Worked">
+    <input type="number" id="dailyRate" placeholder="Daily Rate">
+    <input type="number" id="deductionAmount" placeholder="Deduction Amount">
+    <button onclick="addEmployee()">Add Employee</button>
+    <button onclick="clearTable()">Clear All</button>
 
-        <table id="payrollTable">
-            <tr>
-                <th>No.</th>
-                <th>Employee Name</th>
-                <th>Days Worked</th>
-                <th>Daily Rate</th>
-                <th>Gross Pay</th>
-                <th>Deduction Amount</th>
-                <th>Net Pay</th>
-                <th>Action</th>
-            </tr>
-        </table>
-    </div>
+    <table id="payrollTable">
+        <tr>
+            <th>No.</th>
+            <th>Employee Name</th>
+            <th>Days Worked</th>
+            <th>Daily Rate</th>
+            <th>Gross Pay</th>
+            <th>Deduction Amount</th>
+            <th>Net Pay</th>
+            <th>Action</th>
+        </tr>
+    </table>
 
-    <script>
+ <script>
         let payrollList = [];
 
         function addEmployee() {
