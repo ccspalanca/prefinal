@@ -15,9 +15,7 @@
     <!-- Your Payroll System content here -->
 
     <script>
-        // (Your existing JavaScript code here)
-let payrollList = [];
-        {
+        let payrollList = [];
         function addEmployee() {
             let name = document.getElementById("name").value;
             let daysWorked = parseInt(document.getElementById("daysWorked").value);
@@ -51,7 +49,7 @@ let payrollList = [];
 
             payrollList.forEach((employee, index) => {
                 let row = table.insertRow(-1);
-                row.innerHTML = <td>${index + 1}</td><td>${employee.name}</td><td>${employee.daysWorked}</td><td>${employee.dailyRate}</td><td>${employee.grossPay}</td><td>${employee.deductionAmount}</td><td>${employee.netPay}</td><td><button onclick="deleteEmployee(${index})">Delete</button></td>;
+                row.innerHTML = `<td>${index + 1}</td><td>${employee.name}</td><td>${employee.daysWorked}</td><td>${employee.dailyRate}</td><td>${employee.grossPay}</td><td>${employee.deductionAmount}</td><td>${employee.netPay}</td><td><button onclick="deleteEmployee(${index})">Delete</button></td>`;
             });
         }
     </script>
