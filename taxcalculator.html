@@ -4,13 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Income Tax Calculator</title>
-    <!-- Include your styles/scripts specific to the Income Tax Calculator here -->
+    <style>
+        /* Include your styles specific to the Income Tax Calculator here */
+    </style>
 </head>
 <body>
 
     <h1>Income Tax Calculator</h1>
 
     <!-- Your Income Tax Calculator content here -->
+
+    <script>
+      const taxCalculator = document.getElementById('taxCalculator');
+        const incomeInput = document.getElementById('income');
+        const resultDiv = document.getElementById('result');
+
+        taxCalculator.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const income = parseFloat(incomeInput.value);
+            const tax = calculateTax(income);
+
+            resultDiv.textContent = Your income tax is: ₱${tax.toFixed(2)};
+        });
+
+        function calculateTax(income) {
+            let tax = 0;
+
+            if (income <= 250000) {
+                tax = 0;
+            } else if (income > 250000 && income <= 400000) {
+                tax = (income - 250000) * 0.20;
+            } else if (income > 400000 && income <= 800000) {
+                tax = 30000 + (income - 400000) * 0.25;
+            } else if (income > 800000 && income <= 2000000) {
+                tax = 130000 + (income - 800000) * 0.30;
+            } else if (income > 2000000 && income <= 8000000) {
+                tax = 490000 + (income - 2000000) * 0.32;
+            } else {
+                tax = 2410000 + (income - 8000000) * 0.35;
+            }
+
+            return tax;
+        }
+
+        function clearTable() {
+            if (confirm("Are you sure you want to clear all data?")) {
+                payrollList = [];
+                updateTable();
+            }
+        }
+    </script>
 
 </body>
 </html>
