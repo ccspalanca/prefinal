@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #resultBox {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f0f0f0; /* Grey background color */
+        }
+    </style>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+
+    <table>
+        <tr>
+            <th>Conversion Type</th>
+            <td>
+                <select id="conversionType">
+                    <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+                    <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+                    <option value="metersToFeet">Meters to Feet</option>
+                    <option value="feetToMeters">Feet to Meters</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Enter Value:</th>
+            <td><input type="number" id="inputValue" placeholder="Enter value"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><button onclick="convert()">Convert</button></td>
+        </tr>
+    </table>
+
+    <div id="resultBox">
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convert() {
+            const conversionType = document.getElementById("conversionType").value;
+            const inputValue = parseFloat(document.getElementById("inputValue").value);
+
+            let result;
+
+            switch (conversionType) {
+                case "fahrenheitToCelsius":
+                    result = (inputValue - 32) * (5/9);
+                    break;
+                case "celsiusToFahrenheit":
+                    result = (inputValue * (9/5)) + 32;
+                    break;
+                case "metersToFeet":
+                    result = inputValue * 3.28084;
+                    break;
+                case "feetToMeters":
+                    result = inputValue / 3.28084;
+                    break;
+                default:
+                    result = "Invalid conversion type";
+            }
+
+            document.getElementById("result").innerHTML = `Result: ${result.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
