@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter</title>
     <style>
+    	    nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 13px;
+      background-color: #007bff;
+      height: 16px;
+    }
+
+    nav a.home {
+      /* Position to top right corner */
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -30,6 +51,11 @@
     </style>
 </head>
 <body>
+<header>
+  <nav>
+    <a href="index.html" class="home">Home</a>
+  </nav>
+</header>
     <h1>Unit Converter</h1>
 
     <table>
