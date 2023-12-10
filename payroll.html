@@ -4,13 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payroll System</title>
-    <!-- Include your styles/scripts specific to the Payroll System here -->
+    <style>
+        /* Include your styles specific to the Payroll System here */
+    </style>
 </head>
 <body>
 
     <h2>Employee Payroll System</h2>
 
     <!-- Your Payroll System content here -->
+
+    <script>
+        // (Your existing JavaScript code here)
+let payrollList = [];
+        {
+        function addEmployee() {
+            let name = document.getElementById("name").value;
+            let daysWorked = parseInt(document.getElementById("daysWorked").value);
+            let dailyRate = parseInt(document.getElementById("dailyRate").value);
+            let deductionAmount = parseInt(document.getElementById("deductionAmount").value);
+
+            let grossPay = daysWorked * dailyRate;
+            let netPay = grossPay - deductionAmount;
+
+            let employee = {
+                name: name,
+                daysWorked: daysWorked,
+                dailyRate: dailyRate,
+                grossPay: grossPay,
+                deductionAmount: deductionAmount,
+                netPay: netPay
+            };
+
+            payrollList.push(employee);
+            updateTable();
+        }
+
+        function deleteEmployee(index) {
+            payrollList.splice(index, 1);
+            updateTable();
+        }
+
+        function updateTable() {
+            let table = document.getElementById("payrollTable");
+            table.innerHTML = "<tr><th>No.</th><th>Employee Name</th><th>Days Worked</th><th>Daily Rate</th><th>Gross Pay</th><th>Deduction Amount</th><th>Net Pay</th><th>Action</th></tr>";
+
+            payrollList.forEach((employee, index) => {
+                let row = table.insertRow(-1);
+                row.innerHTML = <td>${index + 1}</td><td>${employee.name}</td><td>${employee.daysWorked}</td><td>${employee.dailyRate}</td><td>${employee.grossPay}</td><td>${employee.deductionAmount}</td><td>${employee.netPay}</td><td><button onclick="deleteEmployee(${index})">Delete</button></td>;
+            });
+        }
+    </script>
 
 </body>
 </html>
