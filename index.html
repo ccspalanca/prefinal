@@ -1,12 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CS 1130 PRE-FINAL</title>
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            height: 100vh;
+        }
+
+        #left-section, #right-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        h2, h1 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"], input[type="button"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
-<h1>WEB PROJECT (CONVERSION, LOOPING, INCOME TAX AND PAYROLL)</h1>
-<p>none...</p>
+    <div id="left-section">
+        <h2>Employee Payroll System</h2>
 
+        <input type="text" id="name" placeholder="Employee Name">
+        <input type="number" id="daysWorked" placeholder="Days Worked">
+        <input type="number" id="dailyRate" placeholder="Daily Rate">
+        <input type="number" id="deductionAmount" placeholder="Deduction Amount">
+        <button onclick="addEmployee()">Add Employee</button>
+        <button onclick="clearTable()">Clear All</button>
+
+        <table id="payrollTable">
+            <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="right-section">
+        <h1>Income Tax Calculator</h1>
+
+        <form id="taxCalculator" class="tax-calculator">
+            <label for="income">Enter your annual income (₱):</label>
+            <input type="number" name="income" id="income" required>
+            <input type="submit" value="Calculate Tax">
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // (Your existing JavaScript code here)
+let payrollList = [];
+
+        function addEmployee() {
+            let name = document.getElementById("name").value;
+            let daysWorked = parseInt(document.getElementById("daysWorked").value);
+            let dailyRate = parseInt(document.getElementById("dailyRate").value);
+            let deductionAmount = parseInt(document.getElementById("deductionAmount").value);
+
+            let grossPay = daysWorked * dailyRate;
+            let netPay = grossPay - deductionAmount;
+
+            let employee = {
+                name: name,
+                daysWorked: daysWorked,
+                dailyRate: dailyRate,
+                grossPay: grossPay,
+                deductionAmount: deductionAmount,
+                netPay: netPay
+            };
+
+            payrollList.push(employee);
+            updateTable();
+        }
+
+        function deleteEmployee(index) {
+            payrollList.splice(index, 1);
+            updateTable();
+        }
+
+        function updateTable() {
+            let table = document.getElementById("payrollTable");
+            table.innerHTML = "<tr><th>No.</th><th>Employee Name</th><th>Days Worked</th><th>Daily Rate</th><th>Gross Pay</th><th>Deduction Amount</th><th>Net Pay</th><th>Action</th></tr>";
+
+            payrollList.forEach((employee, index) => {
+                let row = table.insertRow(-1);
+                row.innerHTML = `<td>${index + 1}</td><td>${employee.name}</td><td>${employee.daysWorked}</td><td>${employee.dailyRate}</td><td>${employee.grossPay}</td><td>${employee.deductionAmount}</td><td>${employee.netPay}</td><td><button onclick="deleteEmployee(${index})">Delete</button></td>`;
+            });
+        }
+
+        const taxCalculator = document.getElementById('taxCalculator');
+        const incomeInput = document.getElementById('income');
+        const resultDiv = document.getElementById('result');
+
+        taxCalculator.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const income = parseFloat(incomeInput.value);
+            const tax = calculateTax(income);
+
+            resultDiv.textContent = `Your income tax is: ₱${tax.toFixed(2)}`;
+        });
+
+        function calculateTax(income) {
+            let tax = 0;
+
+            if (income <= 250000) {
+                tax = 0;
+            } else if (income > 250000 && income <= 400000) {
+                tax = (income - 250000) * 0.20;
+            } else if (income > 400000 && income <= 800000) {
+                tax = 30000 + (income - 400000) * 0.25;
+            } else if (income > 800000 && income <= 2000000) {
+                tax = 130000 + (income - 800000) * 0.30;
+            } else if (income > 2000000 && income <= 8000000) {
+                tax = 490000 + (income - 2000000) * 0.32;
+            } else {
+                tax = 2410000 + (income - 8000000) * 0.35;
+            }
+
+            return tax;
+        }
+
+        function clearTable() {
+            if (confirm("Are you sure you want to clear all data?")) {
+                payrollList = [];
+                updateTable();
+            }
+        }
+        // ... (No changes to your existing JavaScript code for Employee Payroll System and Income Tax Calculator)
+    </script>
 </body>
 </html>
